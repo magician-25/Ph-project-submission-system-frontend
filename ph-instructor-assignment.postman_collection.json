@@ -1,0 +1,852 @@
+{
+  "info": {
+    "_postman_id": "7d18e1d5-f753-455a-a0cf-7d9c4b4fa51c",
+    "name": "ph-instructor-assignment",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49682002"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n    // \"email\":\"hasib@gmail.com\",\r\n    // \"password\":\"a12345678A\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/login",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "login",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/login",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Login successful\",\r\n    \"data\": {\r\n        \"accessToken\": \"{{json_web_token_0e2h}}\"\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "create student account",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasib@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/signup",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "signup"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create student account",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasib@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"ksbfdvavsdnsjq372\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/auth/signup",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "signup"
+                  ]
+                }
+              },
+              "_postman_previewlanguage": "json",
+              "header": null,
+              "cookie": [],
+              "body": ""
+            }
+          ]
+        },
+        {
+          "name": "logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/logout",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "logout"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "logout",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/logout",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "logout"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Logout successful\"\r\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "batch",
+      "item": [
+        {
+          "name": "create batch",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Level 1\",\r\n    \"code\": \"ABC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/batches",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "batches"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create batch",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Level 1\",\r\n    \"code\": \"ABC\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/batches",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "batches"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batch created\",\r\n    \"data\": {\r\n        \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n        \"name\": \"Level 1\",\r\n        \"code\": \"ABC\",\r\n        \"created_at\": \"2026-10-20T11:22:43.917Z\",\r\n        \"updated_at\": \"2026-10-20T11:22:43.917Z\"\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "get batches",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Level 1\",\r\n    \"code\": \"ABC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/batches",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "batches"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get batches",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/batches",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "batches"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batches retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n            \"name\": \"Level 1\",\r\n            \"code\": \"ABC\"\r\n        }\r\n    ]\r\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "assignment",
+      "item": [
+        {
+          "name": "create assignment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\":\"B12 A7\",\r\n    \"batchId\":\"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n    \"requirementDocUrl\":\"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n    \"assignmentRepoUrl\":\"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n    \"assignmentNumber\": 7\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create assignment",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\":\"B12 A7\",\r\n    \"batchId\":\"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n    \"requirementDocUrl\":\"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n    \"assignmentRepoUrl\":\"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n    \"assignmentNumber\": \"7\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Assignment created\",\n    \"data\": {\n        \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n        \"title\": \"B12 A7\",\n        \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n        \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n        \"assignment_number\": 7,\n        \"status\": \"PENDING\",\n        \"released_at\": null,\n        \"created_at\": \"2026-10-20T12:03:59.286Z\",\n        \"updated_at\": \"2026-10-20T12:03:59.286Z\",\n        \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\n        \"batch\": {\n            \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\n            \"name\": \"Level 1\",\n            \"code\": \"ABC\",\n            \"created_at\": \"2026-10-20T11:22:43.917Z\",\n            \"updated_at\": \"2026-10-20T11:22:43.917Z\"\n        }\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get assignments",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get assignments",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/assignments",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Released assignments retrieved\",\n    \"data\": [\n        {\n            \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n            \"title\": \"B12 A7\",\n            \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n            \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n            \"assignment_number\": 7,\n            \"status\": \"RELEASED\",\n            \"released_at\": \"2026-10-20T13:06:46.502Z\",\n            \"created_at\": \"2026-10-20T12:03:59.286Z\",\n            \"updated_at\": \"2026-10-20T13:06:46.708Z\",\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "get assignments for admin",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/assignments/admin/batches/:batchId?status=pending",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "admin",
+                "batches",
+                ":batchId"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "pending"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "batchId",
+                  "value": "6aff2209-c1b8-482f-aee9-7895c2cbcbec"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get assignments for admin",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/admin/batches/:batchId?status=pending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "admin",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "pending"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "batchId",
+                      "value": "6aff2209-c1b8-482f-aee9-7895c2cbcbec"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batch assignments retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n            \"title\": \"B12 A7\",\r\n            \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_number\": 7,\r\n            \"status\": \"PENDING\",\r\n            \"released_at\": null,\r\n            \"created_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"updated_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n            \"batch\": {\r\n                \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n                \"name\": \"Level 1\",\r\n                \"code\": \"ABC\",\r\n                \"created_at\": \"2026-10-20T11:22:43.917Z\",\r\n                \"updated_at\": \"2026-10-20T11:22:43.917Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 10,\r\n        \"totalPages\": 1,\r\n        \"dataCount\": 1\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "update assignment status",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\":\"RELEASED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/:assignmentId/status",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                ":assignmentId",
+                "status"
+              ],
+              "variable": [
+                {
+                  "key": "assignmentId",
+                  "value": "6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "update assignment status",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/:assignmentId/status",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    ":assignmentId",
+                    "status"
+                  ],
+                  "variable": [
+                    {
+                      "key": "assignmentId",
+                      "value": "6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batch assignments retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n            \"title\": \"B12 A7\",\r\n            \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_number\": 7,\r\n            \"status\": \"PENDING\",\r\n            \"released_at\": null,\r\n            \"created_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"updated_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n            \"batch\": {\r\n                \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n                \"name\": \"Level 1\",\r\n                \"code\": \"ABC\",\r\n                \"created_at\": \"2026-10-20T11:22:43.917Z\",\r\n                \"updated_at\": \"2026-10-20T11:22:43.917Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 10,\r\n        \"totalPages\": 1,\r\n        \"dataCount\": 1\r\n    }\r\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "submission",
+      "item": [
+        {
+          "name": "create submission",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"assignmentId\":\"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n    \"userInput\":\"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "create submission",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"assignmentId\":\"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n    \"userInput\":\"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/submissions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Submission created\",\r\n    \"data\": {\r\n        \"id\": \"36946979-9220-48fe-bc3d-6aa6fc83b3c4\",\r\n        \"user_input\": \"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n        \"status\": \"PENDING\",\r\n        \"review_note\": null,\r\n        \"reviewed_at\": null,\r\n        \"created_at\": \"2026-10-20T13:31:54.226Z\",\r\n        \"updated_at\": \"2026-10-20T13:31:54.226Z\",\r\n        \"assignment_id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n        \"student_id\": \"7b01b047-0049-46f2-888f-45f3246f0116\",\r\n        \"reviewer_id\": null\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "get student submissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/submissions/mine",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions",
+                "mine"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get student submissions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions/mine",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions",
+                    "mine"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Your submissions retrieved\",\n    \"data\": [\n        {\n            \"id\": \"36946979-9220-48fe-bc3d-6aa6fc83b3c4\",\n            \"user_input\": \"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n            \"status\": \"PENDING\",\n            \"review_note\": null,\n            \"reviewed_at\": null,\n            \"created_at\": \"2026-10-20T13:31:54.226Z\",\n            \"updated_at\": \"2026-10-20T13:31:54.226Z\",\n            \"assignment_id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n            \"student_id\": \"7b01b047-0049-46f2-888f-45f3246f0116\",\n            \"reviewer_id\": null,\n            \"assignment\": {\n                \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n                \"title\": \"B12 A7\",\n                \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n                \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n                \"assignment_number\": 7,\n                \"status\": \"RELEASED\",\n                \"released_at\": \"2026-10-20T13:06:46.502Z\",\n                \"created_at\": \"2026-10-20T12:03:59.286Z\",\n                \"updated_at\": \"2026-10-20T13:06:46.708Z\",\n                \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\n            }\n        }\n    ]\n}"
+            }
+          ]
+        },
+        {
+          "name": "get submissions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/submissions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get submissions",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Submissions retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"36946979-9220-48fe-bc3d-6aa6fc83b3c4\",\r\n            \"user_input\": \"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n            \"status\": \"PENDING\",\r\n            \"review_note\": null,\r\n            \"reviewed_at\": null,\r\n            \"created_at\": \"2026-10-20T13:31:54.226Z\",\r\n            \"updated_at\": \"2026-10-20T13:31:54.226Z\",\r\n            \"assignment_id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n            \"student_id\": \"7b01b047-0049-46f2-888f-45f3246f0116\",\r\n            \"reviewer_id\": null,\r\n            \"student\": {\r\n                \"id\": \"7b01b047-0049-46f2-888f-45f3246f0116\",\r\n                \"name\": \"hasib\",\r\n                \"email\": \"hasib@gmail.com\"\r\n            },\r\n            \"reviewer\": null,\r\n            \"assignment\": {\r\n                \"assignment_number\": 7,\r\n                \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n                \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n                \"status\": \"RELEASED\",\r\n                \"batch\": {\r\n                    \"name\": \"Level 1\",\r\n                    \"code\": \"ABC\"\r\n                }\r\n            }\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 10,\r\n        \"dataCount\": 1,\r\n        \"totalPages\": 1\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "get submission stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/submissions/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions",
+                "stats"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get submission stats",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/submissions/stats",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions",
+                    "stats"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Submission statistics retrieved\",\r\n    \"data\": {\r\n        \"total\": 1,\r\n        \"pending\": 1,\r\n        \"approved\": 0,\r\n        \"rejected\": 0\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "review submission",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"APPROVED\",\r\n    \"reviewNote\": \"Well done\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/submissions/:id/review",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "submissions",
+                ":id",
+                "review"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "36946979-9220-48fe-bc3d-6aa6fc83b3c4",
+                  "description": "submission id"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "review submission",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"APPROVED\",\r\n    \"reviewNote\": \"Well done\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/submissions/:id/review",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "submissions",
+                    ":id",
+                    "review"
+                  ],
+                  "variable": [
+                    {
+                      "key": "id",
+                      "value": "36946979-9220-48fe-bc3d-6aa6fc83b3c4",
+                      "description": "submission id"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Submission reviewed\",\r\n    \"data\": {\r\n        \"id\": \"36946979-9220-48fe-bc3d-6aa6fc83b3c4\",\r\n        \"user_input\": \"live link: 6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n        \"status\": \"APPROVED\",\r\n        \"review_note\": \"Well done\",\r\n        \"reviewed_at\": \"2026-10-20T13:58:41.564Z\",\r\n        \"created_at\": \"2026-10-20T13:31:54.226Z\",\r\n        \"updated_at\": \"2026-10-20T13:58:41.579Z\",\r\n        \"assignment_id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n        \"student_id\": \"7b01b047-0049-46f2-888f-45f3246f0116\",\r\n        \"reviewer_id\": \"0846305f-573f-4793-8840-3f68db153e58\"\r\n    }\r\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "local",
+      "value": ""
+    },
+    {
+      "key": "production",
+      "value": ""
+    },
+    {
+      "key": "baseUrl",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_0e2h",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_09wm",
+      "secret": true
+    }
+  ]
+}
