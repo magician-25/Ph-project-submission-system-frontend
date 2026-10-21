@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination:
+          "https://ph-project-submission-system-backen.vercel.app/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

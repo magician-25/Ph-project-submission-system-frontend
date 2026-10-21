@@ -4,14 +4,14 @@ Frontend for the PH instructor assignment and submission system. Built with Next
 
 ## Getting started
 
-Install dependencies and configure the backend API root:
+Install dependencies and configure the same-origin API proxy:
 
 ```bash
 npm install
 Copy-Item .env.example .env.local
 ```
 
-Set `NEXT_PUBLIC_API_BASE_URL` in `.env.local` to the API root that serves `/auth/login`, `/auth/signup`, and `/auth/logout`. Then start the app:
+`NEXT_PUBLIC_API_BASE_URL` defaults to `/api`. The Next.js rewrite proxies requests from this path to the production backend, keeping browser requests same-origin so auth cookies are not treated as third-party cookies. Keep `/api` as the base URL unless you intentionally configure another proxy. Then start the app:
 
 ```bash
 npm run dev
