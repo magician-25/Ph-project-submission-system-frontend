@@ -13,6 +13,20 @@ import { loginSchema } from "@/schemas";
 import { triggerToast } from "@/utils";
 import { Field, FieldError, FieldLabel } from "../ui/field";
 
+const DEMO_ACCOUNTS = [
+  {
+    label: "Admin",
+    email: "admin@example.com",
+    password: "AdminExample1",
+  },
+  {
+    label: "Mentor",
+    email: "mentor@gmail.com",
+    password: "a12345678A",
+  },
+  { label: "Student", email: "student@gmail.com", password: "a12345678A" },
+];
+
 export default function LoginForm() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
@@ -130,6 +144,24 @@ export default function LoginForm() {
       <Button className="h-11 w-full" disabled={isPending} type="submit">
         {isPending ? "Signing in..." : "Sign in"}
       </Button>
+
+      <div className="mx-auto grid grid-cols-1 lg:grid-cols-3 gap-2">
+        {DEMO_ACCOUNTS.map((acc) => (
+          <Button
+            key={acc.label}
+            type="button"
+            className="h-auto min-h-9 w-full min-w-0 whitespace-normal wrap-break-word px-2 py-2 text-center leading-tight"
+            size="lg"
+            variant="secondary"
+            onClick={() => {
+              form.setFieldValue("email", acc.email);
+              form.setFieldValue("password", acc.password);
+            }}
+          >
+            {acc.label}
+          </Button>
+        ))}
+      </div>
 
       <p className="text-center text-sm text-muted-foreground">
         New to the workspace?{" "}

@@ -1,4 +1,5 @@
 export * from "./api.types";
+export * from "./assignment.types";
 export * from "./auth.types";
 export * from "./auth.types";
 export * from "./batch.types";
