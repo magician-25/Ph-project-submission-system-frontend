@@ -2,8 +2,8 @@ export interface User {
     name: string;
     email: string;
     id: string;
-    created_at: Date;
-    updated_at: Date;
+    created_at: string;
+    updated_at: string;
     role: Role;
     user_status: UserStatus;
     batch_id: string | null;

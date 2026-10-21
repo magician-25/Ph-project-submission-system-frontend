@@ -16,7 +16,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n    // \"email\":\"hasib@gmail.com\",\r\n    // \"password\":\"a12345678A\"\r\n}",
+              "raw": "{\r\n//     \"email\":\"admin@example.com\",\r\n//     \"password\":\"AdminExample1\"\r\n    \"email\":\"mentor@gmail.com\",\r\n    \"password\": \"a12345678A\"\r\n    // \"email\":\"student@gmail.com\",\r\n    // \"password\": \"a12345678A\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -65,7 +65,7 @@
               "_postman_previewlanguage": "text",
               "header": null,
               "cookie": [],
-              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Login successful\",\r\n    \"data\": {\r\n        \"accessToken\": \"{{json_web_token_0e2h}}\"\r\n    }\r\n}"
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Login successful\",\r\n    \"data\": {\r\n        \"accessToken\": \"{{json_web_token_0e2h}}\",\r\n        \"role\": \"ADMIN\"\r\n    }\r\n}"
             }
           ]
         },
@@ -76,7 +76,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasib@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n}",
+              "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasibadi@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -102,7 +102,7 @@
                 "header": [],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasib@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"ksbfdvavsdnsjq372\"\r\n}",
+                  "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasibadi@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n}",
                   "options": {
                     "raw": {
                       "language": "json"
@@ -120,10 +120,12 @@
                   ]
                 }
               },
-              "_postman_previewlanguage": "json",
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
               "header": null,
               "cookie": [],
-              "body": ""
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Student account created\",\r\n    \"data\": {\r\n        \"accessToken\": \"{{json_web_token_0i97}}\",\r\n        \"role\": \"STUDENT\"\r\n    }\r\n}"
             }
           ]
         },
@@ -166,6 +168,208 @@
               "header": null,
               "cookie": [],
               "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Logout successful\"\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "get me",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n    // \"email\":\"hasib@gmail.com\",\r\n    // \"password\":\"a12345678A\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/me",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "me"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get me",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/me",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"success\": true,\n    \"message\": \"Profile retrieved\",\n    \"data\": {\n        \"id\": \"0846305f-573f-4793-8840-3f68db153e58\",\n        \"name\": \"Project Admin\",\n        \"email\": \"admin@example.com\",\n        \"password\": \"$2b$12$pR26L2.oNYJNwipyYBf55uwDeBfCVjaMUTsewHqQfq29Z/pAmX0Hy\",\n        \"role\": \"ADMIN\",\n        \"user_status\": \"ACTIVE\",\n        \"created_at\": \"2026-10-20T10:39:29.710Z\",\n        \"updated_at\": \"2026-10-20T10:39:29.710Z\",\n        \"batch_id\": null\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "get users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"hasib\",\r\n    \"email\": \"hasibadi@gmail.com\",\r\n    \"password\": \"a12345678A\",\r\n    \"batchId\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/auth/users?limit=3",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "3"
+                },
+                {
+                  "key": "page",
+                  "value": "1",
+                  "disabled": true
+                },
+                {
+                  "key": "searchTerm",
+                  "value": "men",
+                  "disabled": true
+                },
+                {
+                  "key": "role",
+                  "value": "mentor",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/users?limit=5&page=2&searchTerm=men&role=mentor",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "users"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "5"
+                    },
+                    {
+                      "key": "page",
+                      "value": "2"
+                    },
+                    {
+                      "key": "searchTerm",
+                      "value": "men"
+                    },
+                    {
+                      "key": "role",
+                      "value": "mentor"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Users retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"b0eb9d0c-1473-49a9-93b6-16e595e6083d\",\r\n            \"name\": \"Mentor\",\r\n            \"email\": \"mentor@gmail.com\",\r\n            \"role\": \"STUDENT\",\r\n            \"user_status\": \"ACTIVE\",\r\n            \"created_at\": \"2026-10-21T13:00:10.175Z\",\r\n            \"updated_at\": \"2026-10-21T13:00:10.175Z\",\r\n            \"batch_id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\"\r\n        },\r\n        {\r\n            \"id\": \"f20c828b-2d06-46a3-ba8c-b1738b2048db\",\r\n            \"name\": \"student\",\r\n            \"email\": \"student@gmail.com\",\r\n            \"role\": \"STUDENT\",\r\n            \"user_status\": \"ACTIVE\",\r\n            \"created_at\": \"2026-10-21T09:36:58.908Z\",\r\n            \"updated_at\": \"2026-10-21T09:36:58.908Z\",\r\n            \"batch_id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\"\r\n        },\r\n        {\r\n            \"id\": \"d4beb706-443f-4400-a33f-e459e7d3ef73\",\r\n            \"name\": \"Abdul Hasib\",\r\n            \"email\": \"hasibadi22@gmail.com\",\r\n            \"role\": \"STUDENT\",\r\n            \"user_status\": \"ACTIVE\",\r\n            \"created_at\": \"2026-10-20T19:01:43.856Z\",\r\n            \"updated_at\": \"2026-10-20T19:01:43.856Z\",\r\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 3,\r\n        \"dataCount\": 6,\r\n        \"totalPages\": 2\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "update student to mentor",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/auth/:userId/mentor",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "auth",
+                ":userId",
+                "mentor"
+              ],
+              "variable": [
+                {
+                  "key": "userId",
+                  "value": "b0eb9d0c-1473-49a9-93b6-16e595e6083d"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "update student to mentor",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/auth/:userId/mentor",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "auth",
+                    ":userId",
+                    "mentor"
+                  ],
+                  "variable": [
+                    {
+                      "key": "userId",
+                      "value": "b0eb9d0c-1473-49a9-93b6-16e595e6083d"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"User promoted to mentor\",\r\n    \"data\": {\r\n        \"id\": \"b0eb9d0c-1473-49a9-93b6-16e595e6083d\",\r\n        \"name\": \"Mentor\",\r\n        \"email\": \"mentor@gmail.com\",\r\n        \"role\": \"MENTOR\",\r\n        \"user_status\": \"ACTIVE\",\r\n        \"created_at\": \"2026-10-21T13:00:10.175Z\",\r\n        \"updated_at\": \"2026-10-21T13:23:10.578Z\",\r\n        \"batch_id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\"\r\n    }\r\n}"
             }
           ]
         }
@@ -350,7 +554,7 @@
           ]
         },
         {
-          "name": "get assignments",
+          "name": "get student assignments",
           "request": {
             "method": "GET",
             "header": [],
@@ -375,7 +579,7 @@
           },
           "response": [
             {
-              "name": "get assignments",
+              "name": "get student assignments",
               "originalRequest": {
                 "method": "GET",
                 "header": [],
@@ -399,7 +603,7 @@
                 }
               ],
               "cookie": [],
-              "body": "{\n    \"success\": true,\n    \"message\": \"Released assignments retrieved\",\n    \"data\": [\n        {\n            \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\n            \"title\": \"B12 A7\",\n            \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n            \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\n            \"assignment_number\": 7,\n            \"status\": \"RELEASED\",\n            \"released_at\": \"2026-10-20T13:06:46.502Z\",\n            \"created_at\": \"2026-10-20T12:03:59.286Z\",\n            \"updated_at\": \"2026-10-20T13:06:46.708Z\",\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\"\n        }\n    ]\n}"
+              "body": "{\n    \"success\": true,\n    \"message\": \"Assignments retrieved\",\n    \"data\": [\n        {\n            \"id\": \"bc26e3d8-0493-471d-87a0-f276f1575d1c\",\n            \"title\": \"Typescript\",\n            \"requirement_doc_url\": \"https://doc.new\",\n            \"assignment_repo_url\": \"https://github.com\",\n            \"assignment_number\": 1,\n            \"status\": \"RELEASED\",\n            \"released_at\": \"2026-10-21T10:10:00.405Z\",\n            \"created_at\": \"2026-10-21T09:32:33.824Z\",\n            \"updated_at\": \"2026-10-21T10:10:00.581Z\",\n            \"batch_id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\",\n            \"mySubmission\": {\n                \"id\": \"4a2abed3-d792-4417-91c2-294d1a430bd1\",\n                \"user_input\": \"live link: https://edu-matrix-backend.vercel.app/\\ngithub_link: https://edu-matrix-backend.github.com/\",\n                \"status\": \"PENDING\",\n                \"mark\": null,\n                \"review_note\": null,\n                \"reviewed_at\": null,\n                \"created_at\": \"2026-10-21T10:21:29.756Z\"\n            }\n        }\n    ]\n}"
             }
           ]
         },
@@ -553,6 +757,80 @@
               "header": null,
               "cookie": [],
               "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batch assignments retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"6fe2b3e6-fa4b-4c30-8955-5981cfb86fa5\",\r\n            \"title\": \"B12 A7\",\r\n            \"requirement_doc_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_repo_url\": \"https://github.com/magician-25/Ph-project-submission-system-frontend\",\r\n            \"assignment_number\": 7,\r\n            \"status\": \"PENDING\",\r\n            \"released_at\": null,\r\n            \"created_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"updated_at\": \"2026-10-20T12:03:59.286Z\",\r\n            \"batch_id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n            \"batch\": {\r\n                \"id\": \"6aff2209-c1b8-482f-aee9-7895c2cbcbec\",\r\n                \"name\": \"Level 1\",\r\n                \"code\": \"ABC\",\r\n                \"created_at\": \"2026-10-20T11:22:43.917Z\",\r\n                \"updated_at\": \"2026-10-20T11:22:43.917Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 10,\r\n        \"totalPages\": 1,\r\n        \"dataCount\": 1\r\n    }\r\n}"
+            }
+          ]
+        },
+        {
+          "name": "get assignments for mentor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Level 1\",\r\n    \"code\": \"ABC\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/assignments/batches/:batchId",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "assignments",
+                "batches",
+                ":batchId"
+              ],
+              "variable": [
+                {
+                  "key": "batchId",
+                  "value": "5b03eb2c-9a5b-4025-bc72-00d7ef101ad9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "get assignments for mentor",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\":\"admin@example.com\",\r\n    \"password\":\"AdminExample1\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/assignments/batches/:batchId",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "assignments",
+                    "batches",
+                    ":batchId"
+                  ],
+                  "variable": [
+                    {
+                      "key": "batchId",
+                      "value": "5b03eb2c-9a5b-4025-bc72-00d7ef101ad9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": null,
+              "cookie": [],
+              "body": "{\r\n    \"success\": true,\r\n    \"message\": \"Batch assignments retrieved\",\r\n    \"data\": [\r\n        {\r\n            \"id\": \"bc26e3d8-0493-471d-87a0-f276f1575d1c\",\r\n            \"title\": \"Typescript\",\r\n            \"requirement_doc_url\": \"https://doc.new\",\r\n            \"assignment_repo_url\": \"https://github.com\",\r\n            \"assignment_number\": 1,\r\n            \"status\": \"RELEASED\",\r\n            \"released_at\": \"2026-10-21T10:10:00.405Z\",\r\n            \"created_at\": \"2026-10-21T09:32:33.824Z\",\r\n            \"updated_at\": \"2026-10-21T10:10:00.581Z\",\r\n            \"batch_id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\",\r\n            \"batch\": {\r\n                \"id\": \"5b03eb2c-9a5b-4025-bc72-00d7ef101ad9\",\r\n                \"name\": \"Level 2\",\r\n                \"code\": \"NEXT-LEVEL\",\r\n                \"created_at\": \"2026-10-21T09:30:08.013Z\",\r\n                \"updated_at\": \"2026-10-21T09:30:08.013Z\"\r\n            }\r\n        }\r\n    ],\r\n    \"meta\": {\r\n        \"page\": 1,\r\n        \"limit\": 10,\r\n        \"totalPages\": 1,\r\n        \"dataCount\": 1\r\n    }\r\n}"
             }
           ]
         }
@@ -846,6 +1124,10 @@
     },
     {
       "key": "json_web_token_09wm",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0i97",
       "secret": true
     }
   ]

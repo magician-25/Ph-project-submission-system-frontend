@@ -9,14 +9,20 @@ import {
 import type { Assignment } from "@/types";
 import { formatDate } from "@/utils";
 import AssignmentSubmitDialog from "./AssignmentSubmitDialog";
+import StudentSubmissionDetailsDialog from "./StudentSubmissionDetailsDialog";
 
 export default function StudentAssignmentCard({
   assignment,
   canSubmit = true,
+  showSubmissionPrompt = true,
 }: {
   assignment: Assignment;
   canSubmit?: boolean;
+  showSubmissionPrompt?: boolean;
 }) {
+  const submission = assignment.mySubmission;
+  const statusLabel = assignment.status === "ENDED" ? "Ended" : "Released";
+
   return (
     <Card>
       <CardHeader className="gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -31,8 +37,14 @@ export default function StudentAssignmentCard({
             </CardDescription>
           </div>
         </div>
-        <span className="w-fit shrink-0 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary">
-          Released
+        <span
+          className={`w-fit shrink-0 rounded-full px-2.5 py-1 text-xs font-medium ${
+            assignment.status === "ENDED"
+              ? "bg-muted text-muted-foreground"
+              : "bg-primary/10 text-primary"
+          }`}
+        >
+          {statusLabel}
         </span>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -58,15 +70,45 @@ export default function StudentAssignmentCard({
         </div>
         <div className="flex flex-wrap items-center justify-between gap-3 border-t pt-4">
           <p className="text-xs text-muted-foreground">
-            Released{" "}
-            {formatDate(assignment.released_at ?? assignment.updated_at)}
+            {assignment.status === "ENDED" ? "Ended" : "Released"}{" "}
+            {formatDate(
+              assignment.status === "ENDED"
+                ? assignment.updated_at
+                : (assignment.released_at ?? assignment.updated_at),
+            )}
           </p>
           {canSubmit ? (
-            <AssignmentSubmitDialog assignment={assignment} />
+            submission ? (
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                {submission.status === "PENDING" ? (
+                  <span className="rounded-full bg-amber-500/10 px-2.5 py-1 text-xs font-medium text-amber-700 dark:text-amber-300">
+                    Pending review
+                  </span>
+                ) : (
+                  <div className="text-right text-xs text-muted-foreground">
+                    <p>Mark: {submission.mark ?? "Not provided"}</p>
+                    <p className="max-w-56 truncate">
+                      Review: {submission.review_note || "No review note"}
+                    </p>
+                  </div>
+                )}
+                <StudentSubmissionDetailsDialog assignment={assignment} />
+              </div>
+            ) : (
+              assignment.status === "ENDED" ? (
+                <span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                  Submission closed
+                </span>
+              ) : (
+                <AssignmentSubmitDialog assignment={assignment} />
+              )
+            )
           ) : (
-            <p className="text-xs text-muted-foreground">
-              Student submissions are reviewed separately.
-            </p>
+            showSubmissionPrompt && (
+              <p className="text-xs text-muted-foreground">
+                Student submissions are reviewed separately.
+              </p>
+            )
           )}
         </div>
       </CardContent>

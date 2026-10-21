@@ -24,9 +24,32 @@ export const getAssignments = (status?: AssignmentStatus) => {
 export const getBatchAssignments = (
   batchId: string,
   status: AssignmentStatus,
+  page = 1,
+  limit = 10,
 ) => {
+  const query = new URLSearchParams({
+    status: status.toLowerCase(),
+    page: String(page),
+    limit: String(limit),
+  });
   return apiClient<ApiResponse<Assignment[]>>(
-    `${prefix}/admin/batches/${encodeURIComponent(batchId)}?status=${status.toLowerCase()}`,
+    `${prefix}/admin/batches/${encodeURIComponent(batchId)}?${query.toString()}`,
+  );
+};
+
+export const getMentorBatchAssignments = (
+  batchId: string,
+  status: AssignmentStatus | undefined,
+  page: number,
+  limit: number,
+) => {
+  const query = new URLSearchParams({
+    page: String(page),
+    limit: String(limit),
+  });
+  if (status) query.set("status", status.toLowerCase());
+  return apiClient<ApiResponse<Assignment[]>>(
+    `${prefix}/batches/${encodeURIComponent(batchId)}?${query.toString()}`,
   );
 };
 

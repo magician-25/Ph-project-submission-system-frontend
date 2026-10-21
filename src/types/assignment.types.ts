@@ -19,6 +19,16 @@ export interface AssignmentBatch {
   updated_at?: string;
 }
 
+export interface StudentAssignmentSubmission {
+  id: string;
+  user_input: string;
+  status: "PENDING" | "APPROVED" | "REJECTED";
+  mark: number | null;
+  review_note: string | null;
+  reviewed_at: string | null;
+  created_at: string;
+}
+
 export interface Assignment {
   id: string;
   title: string;
@@ -31,4 +41,5 @@ export interface Assignment {
   updated_at: string;
   batch_id: string;
   batch?: AssignmentBatch;
+  mySubmission?: StudentAssignmentSubmission | null;
 }

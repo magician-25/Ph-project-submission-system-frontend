@@ -1,5 +1,5 @@
 import StudentAssignmentList from "@/components/modules/assignments/StudentAssignmentList";
 
 export default function AssignmentsPage() {
-  return <StudentAssignmentList roleLabel="student" />;
+  return <StudentAssignmentList />;
 }

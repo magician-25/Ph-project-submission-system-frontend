@@ -1,11 +1,5 @@
-import SectionPlaceholder from "@/components/dashboard/section-placeholder";
+import StudentSubmissionList from "@/components/modules/submissions/StudentSubmissionList";
 
 export default function SubmissionsPage() {
-  return (
-    <SectionPlaceholder
-      description="Review student work, follow submission status, and provide feedback."
-      endpoint="GET /submissions"
-      title="Submissions"
-    />
-  );
+  return <StudentSubmissionList />;
 }

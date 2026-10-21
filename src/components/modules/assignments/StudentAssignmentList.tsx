@@ -17,13 +17,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useGetAssignments } from "@/hooks";
 import StudentAssignmentCard from "./StudentAssignmentCard";
 
-interface StudentAssignmentListProps {
-  roleLabel: "student" | "mentor";
-}
-
-export default function StudentAssignmentList({
-  roleLabel,
-}: StudentAssignmentListProps) {
+export default function StudentAssignmentList() {
   const {
     data,
     isPending,
@@ -31,7 +25,7 @@ export default function StudentAssignmentList({
     error,
     refetch,
     isFetching,
-  } = useGetAssignments("RELEASED");
+  } = useGetAssignments();
   const assignments = data?.success ? (data.data ?? []) : [];
   const responseError = data && !data.success ? data.message : undefined;
   const errorMessage =
@@ -51,7 +45,7 @@ export default function StudentAssignmentList({
             Assignments
           </h1>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            Released assignments for your batch.
+            Released and ended assignments for your batch.
           </p>
         </div>
         <Button
@@ -98,12 +92,6 @@ export default function StudentAssignmentList({
             </div>
           </CardHeader>
           <CardContent className="space-y-3">
-            {roleLabel === "mentor" && (
-              <p className="text-sm text-muted-foreground">
-                The current assignments endpoint only grants access to students.
-                Ask an administrator to enable mentor access.
-              </p>
-            )}
             <Button
               disabled={isFetching}
               onClick={() => void refetch()}
@@ -120,13 +108,13 @@ export default function StudentAssignmentList({
         </Card>
       ) : assignments.length ? (
         <section
-          aria-label="Released assignments"
+          aria-label="Available assignments"
           className="grid gap-4 lg:grid-cols-2"
         >
           {assignments.map((assignment) => (
             <StudentAssignmentCard
               assignment={assignment}
-              canSubmit={roleLabel === "student"}
+              canSubmit
               key={assignment.id}
             />
           ))}
@@ -140,10 +128,9 @@ export default function StudentAssignmentList({
                 className="size-6"
               />
             </span>
-            <h2 className="font-semibold">No released assignments</h2>
+            <h2 className="font-semibold">No assignments available</h2>
             <p className="mt-1 max-w-sm text-sm text-muted-foreground">
-              New assignments will appear here after they are released for your
-              batch.
+              Released and ended assignments for your batch will appear here.
             </p>
           </CardContent>
         </Card>

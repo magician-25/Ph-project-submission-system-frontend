@@ -3,6 +3,7 @@ import {
   createAssignment,
   getAssignments,
   getBatchAssignments,
+  getMentorBatchAssignments,
   updateAssignmentStatus,
 } from "@/api";
 import type {
@@ -15,7 +16,7 @@ const assignmentQueryKey = ["assignments"] as const;
 
 export const useGetAssignments = (status?: AssignmentStatus) => {
   return useQuery({
-    queryKey: [...assignmentQueryKey, "released", status],
+    queryKey: [...assignmentQueryKey, status ?? "all"],
     queryFn: () => getAssignments(status),
   });
 };
@@ -23,10 +24,25 @@ export const useGetAssignments = (status?: AssignmentStatus) => {
 export const useGetBatchAssignments = (
   batchId: string,
   status: AssignmentStatus,
+  page = 1,
+  limit = 10,
 ) => {
   return useQuery({
-    queryKey: [...assignmentQueryKey, "admin", batchId, status],
-    queryFn: () => getBatchAssignments(batchId, status),
+    queryKey: [...assignmentQueryKey, "admin", batchId, status, page, limit],
+    queryFn: () => getBatchAssignments(batchId, status, page, limit),
+    enabled: Boolean(batchId),
+  });
+};
+
+export const useGetMentorBatchAssignments = (
+  batchId: string,
+  status: AssignmentStatus | undefined,
+  page: number,
+  limit: number,
+) => {
+  return useQuery({
+    queryKey: [...assignmentQueryKey, "mentor", batchId, status, page, limit],
+    queryFn: () => getMentorBatchAssignments(batchId, status, page, limit),
     enabled: Boolean(batchId),
   });
 };

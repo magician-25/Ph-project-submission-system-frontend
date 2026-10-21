@@ -1,5 +1,5 @@
-import StudentAssignmentList from "@/components/modules/assignments/StudentAssignmentList";
+import MentorAssignmentList from "@/components/modules/assignments/MentorAssignmentList";
 
 export default function MentorAssignmentsPage() {
-  return <StudentAssignmentList roleLabel="mentor" />;
+  return <MentorAssignmentList />;
 }

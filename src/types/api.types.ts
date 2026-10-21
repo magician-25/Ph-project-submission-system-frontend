@@ -2,16 +2,15 @@ export interface ApiResponse<TData> {
   success: boolean;
   message: string;
   data?: TData;
-  meta?: Meta
+  meta?: ApiMeta;
 }
 
-interface Meta {
+export interface ApiMeta {
   searchTerm?: string;
-  page?: string;
-  limit?: string;
+  page?: number;
+  limit?: number;
+  totalPages?: number;
+  dataCount?: number;
   sortOrder?: "asc" | "desc";
   sortBy?: string;
-
-  // biome-ignore lint/suspicious/noExplicitAny: <flexible query params>
-  [key: string]: any;
 }

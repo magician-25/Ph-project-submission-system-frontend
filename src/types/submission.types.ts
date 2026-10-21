@@ -4,6 +4,24 @@ import type { Assignment } from "./assignment.types";
 
 export type CreateSubmissionPayload = z.infer<typeof createSubmissionSchema>;
 export type SubmissionStatus = "PENDING" | "APPROVED" | "REJECTED";
+export type ReviewSubmissionPayload = {
+  status: "APPROVED" | "REJECTED";
+  mark?: number;
+  reviewNote?: string;
+};
+
+export interface SubmissionStatistics {
+  total: number;
+  pending: number;
+  approved: number;
+  rejected: number;
+}
+
+export interface SubmissionReviewQuery {
+  status?: SubmissionStatus;
+  page: number;
+  limit: number;
+}
 
 export interface SubmissionStudent {
   id: string;

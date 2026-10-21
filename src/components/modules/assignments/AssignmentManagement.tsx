@@ -8,7 +8,7 @@ import {
 } from "@tabler/icons-react";
 import Link from "next/link";
 import type { FetchError } from "ofetch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -28,6 +28,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Skeleton } from "@/components/ui/skeleton";
+import MyPagination from "@/components/shared/Pagination";
 import {
   useGetBatchAssignments,
   useGetBatches,
@@ -44,6 +45,8 @@ import AssignmentCard from "./AssignmentCard";
 export default function AssignmentManagement() {
   const [batchId, setBatchId] = useState("");
   const [status, setStatus] = useState<AssignmentStatus>("PENDING");
+  const [page, setPage] = useState(1);
+  const pageSize = 10;
   const {
     data: batchResponse,
     isPending: batchesPending,
@@ -60,7 +63,7 @@ export default function AssignmentManagement() {
     error: assignmentsErrorDetail,
     refetch: refetchAssignments,
     isFetching: assignmentsFetching,
-  } = useGetBatchAssignments(batchId, status);
+  } = useGetBatchAssignments(batchId, status, page, pageSize);
   const {
     mutate: updateStatus,
     isPending: isUpdating,
@@ -70,6 +73,11 @@ export default function AssignmentManagement() {
   const assignments = assignmentResponse?.success
     ? (assignmentResponse.data ?? [])
     : [];
+  const totalPages = Math.max(
+    1,
+    Number(assignmentResponse?.meta?.totalPages) || 1,
+  );
+  const totalCount = Number(assignmentResponse?.meta?.dataCount) || 0;
   const responseError =
     (batchResponse && !batchResponse.success && batchResponse.message) ||
     (assignmentResponse &&
@@ -123,6 +131,22 @@ export default function AssignmentManagement() {
   }
 
   const isRefreshing = batchesFetching || assignmentsFetching;
+  useEffect(() => {
+    if (assignmentResponse?.success && page > totalPages) {
+      setPage(totalPages);
+    }
+  }, [assignmentResponse?.success, page, totalPages]);
+
+  function changeBatch(batch: string) {
+    setBatchId(batch);
+    setPage(1);
+  }
+
+  function changeStatus(nextStatus: AssignmentStatus) {
+    setStatus(nextStatus);
+    setPage(1);
+  }
+
   const errorMessage =
     responseError ||
     (batchesError
@@ -184,7 +208,9 @@ export default function AssignmentManagement() {
                 label: `${batch.name} (${batch.code})`,
                 value: batch.id,
               }))}
-              onValueChange={(value) => setBatchId(value ?? "")}
+              onValueChange={(value) => {
+                if (value) changeBatch(value);
+              }}
               value={batchId || null}
             >
               <SelectTrigger
@@ -213,7 +239,7 @@ export default function AssignmentManagement() {
           <div className="flex gap-2">
             <Button
               aria-pressed={status === "PENDING"}
-              onClick={() => setStatus("PENDING")}
+              onClick={() => changeStatus("PENDING")}
               type="button"
               variant={status === "PENDING" ? "default" : "outline"}
             >
@@ -221,7 +247,7 @@ export default function AssignmentManagement() {
             </Button>
             <Button
               aria-pressed={status === "RELEASED"}
-              onClick={() => setStatus("RELEASED")}
+              onClick={() => changeStatus("RELEASED")}
               type="button"
               variant={status === "RELEASED" ? "default" : "outline"}
             >
@@ -229,7 +255,7 @@ export default function AssignmentManagement() {
             </Button>
             <Button
               aria-pressed={status === "ENDED"}
-              onClick={() => setStatus("ENDED")}
+              onClick={() => changeStatus("ENDED")}
               type="button"
               variant={status === "ENDED" ? "default" : "outline"}
             >
@@ -313,21 +339,34 @@ export default function AssignmentManagement() {
           ))}
         </div>
       ) : assignments.length ? (
-        <section
-          aria-label={`${status.toLowerCase()} assignments`}
-          className="grid gap-4 lg:grid-cols-2"
-        >
-          {assignments.map((assignment) => (
-            <AssignmentCard
-              assignment={assignment}
-              isUpdating={
-                isUpdating && variables?.assignmentId === assignment.id
-              }
-              key={assignment.id}
-              onStatusChange={handleStatusChange}
+        <>
+          <section
+            aria-label={`${status.toLowerCase()} assignments`}
+            className="grid gap-4 lg:grid-cols-2"
+          >
+            {assignments.map((assignment) => (
+              <AssignmentCard
+                assignment={assignment}
+                isUpdating={
+                  isUpdating && variables?.assignmentId === assignment.id
+                }
+                key={assignment.id}
+                onStatusChange={handleStatusChange}
+              />
+            ))}
+          </section>
+          <div className="flex flex-col items-center justify-between gap-3 border-t pt-4 sm:flex-row">
+            <p className="text-sm text-muted-foreground">
+              Showing {(page - 1) * pageSize + 1}–
+              {Math.min(page * pageSize, totalCount)} of {totalCount}
+            </p>
+            <MyPagination
+              handlePageChange={setPage}
+              page={page}
+              totalPages={totalPages}
             />
-          ))}
-        </section>
+          </div>
+        </>
       ) : (
         <Card className="border-dashed shadow-none">
           <CardContent className="flex min-h-56 flex-col items-center justify-center p-8 text-center">
