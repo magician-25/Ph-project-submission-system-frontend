@@ -2,6 +2,12 @@
 
 Frontend for the PH instructor assignment and submission system. Built with Next.js App Router, TypeScript, Tailwind CSS v4, shadcn-style UI primitives, TanStack Query/Form, Zod, and `ofetch`.
 
+Backend repository: [PH project submission system backend](https://github.com/magician-25/Ph-project-submission-system-Backend).
+
+## Contributors
+
+- Primary contributor: [hasib-22](https://github.com/hasib-22)
+
 ## Getting started
 
 Install dependencies and configure the same-origin API proxy:
