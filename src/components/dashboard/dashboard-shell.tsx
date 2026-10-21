@@ -1,11 +1,10 @@
 "use client";
 
-import { IconBell, IconLogout } from "@tabler/icons-react";
+import { IconLogout } from "@tabler/icons-react";
 import Link from "next/link";
 import { notFound, usePathname, useRouter } from "next/navigation";
 import type { FetchError } from "ofetch";
 import type { CSSProperties, ReactNode } from "react";
-import { adminRoutes, mentorRoutes, studentRoutes } from "@/app/routes";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
@@ -24,6 +23,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { useGetProfile, useLogout } from "@/hooks";
+import { adminRoutes, mentorRoutes, studentRoutes } from "@/routes";
 import type { Role } from "@/types";
 import { triggerToast } from "@/utils";
 
@@ -91,10 +91,7 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
         <SidebarHeader className="border-b border-sidebar-border px-4 py-3">
           <SidebarMenu>
             <SidebarMenuItem>
-              <SidebarMenuButton
-                className="h-10 gap-3 px-2"
-                size="lg"
-              >
+              <SidebarMenuButton className="h-10 gap-3 px-2" size="lg">
                 <span className="grid size-8 place-items-center rounded-lg bg-sidebar-primary text-sm font-bold text-sidebar-primary-foreground">
                   P
                 </span>
@@ -167,9 +164,6 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
           </div>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Button aria-label="Notifications" size="icon" variant="ghost">
-              <IconBell aria-hidden="true" className="size-4.5" stroke={1.8} />
-            </Button>
             <div className="ml-1 flex items-center gap-3 border-l pl-4">
               <div className="hidden text-right sm:block">
                 <p className="text-sm font-medium leading-none">

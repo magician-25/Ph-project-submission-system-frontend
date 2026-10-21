@@ -16,8 +16,9 @@ export const createAssignment = (payload: CreateAssignmentPayload) => {
   });
 };
 
-export const getAssignments = () => {
-  return apiClient<ApiResponse<Assignment[]>>(prefix);
+export const getAssignments = (status?: AssignmentStatus) => {
+  const query = status ? `?status=${encodeURIComponent(status.toLowerCase())}` : "";
+  return apiClient<ApiResponse<Assignment[]>>(`${prefix}${query}`);
 };
 
 export const getBatchAssignments = (

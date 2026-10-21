@@ -13,10 +13,10 @@ import type {
 
 const assignmentQueryKey = ["assignments"] as const;
 
-export const useGetAssignments = () => {
+export const useGetAssignments = (status?: AssignmentStatus) => {
   return useQuery({
-    queryKey: assignmentQueryKey,
-    queryFn: getAssignments,
+    queryKey: [...assignmentQueryKey, "released", status],
+    queryFn: () => getAssignments(status),
   });
 };
 
