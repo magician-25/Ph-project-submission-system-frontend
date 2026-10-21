@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
       {
         source: "/api/:path*",
         destination:
-          "https://ph-project-submission-system-backen.vercel.app/:path*",
+          "https://ph-project-submission-system-backen.vercel.app/api/:path*",
       },
     ];
   },
